@@ -1,16 +1,27 @@
 describe('Bubble Sort', function(){
-  let bubbleSort;
+  beforeAll(function() {
+    spyOn(window, 'swap').and.callThrough()
+  });
+
   it('is a function', function(){
     expect(typeof bubbleSort).toBe('function')
   });
 
   it('handles an empty array', function(){
-    expect(bubbleSort([]) ).toEqual( [] );
+    expect(bubbleSort([]) ).toEqual( [] )
+  });
+
+  it('sorts the array correctly', function () {
+    expect(bubbleSort([5, 2, 3, 4, 1])).toEqual([1,2,3,4,5]);
+  });
+
+  it('calls swap the right number of times', function () {
+    expect(bubbleSort([5, 2, 3, 4, 1])).toEqual([1,2,3,4,5]);
+    expect(swap.calls.count()).toEqual(15);
   });
 });
 
 describe('Swap', function(){
-  let swap;
   it('is a function', function(){
     expect(typeof swap).toBe('function')
   });
