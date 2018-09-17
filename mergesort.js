@@ -32,3 +32,12 @@ function merge(firstArr, secondArr) {
   }
   return mergedArr;
 }
+
+function mergeSort(array) {
+  if (array.length === 1) return array;
+   else {
+    let split1 = split(array)[0];
+    let split2 = split(array)[1];
+    return merge(mergeSort(split1), mergeSort(split2));
+  }
+}
